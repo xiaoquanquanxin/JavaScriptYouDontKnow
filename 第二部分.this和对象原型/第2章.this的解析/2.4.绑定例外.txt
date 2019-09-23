@@ -1,0 +1,3 @@
+1.当bind、call、apply传入的执行上下文是null、undefined时，会忽略。
+2.更安全的this：DMZ对象[DEMILITARIZED ZONE]。Object.create(null)返回一个没有原型的对象，比null更有可读性，没有被忽略，有意义；比字面量对象更纯净，安全。
+3.软绑定：判断有没有指定this，如果有，就不绑定新的obj；如果没有，就让obj作为函数的执行上下文。
