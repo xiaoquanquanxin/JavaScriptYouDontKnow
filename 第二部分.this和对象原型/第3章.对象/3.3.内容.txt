@@ -16,16 +16,16 @@ seal：封印：将所有属性描述符configurable设置为false，并且不�
 freeze：冻结：只读，忽略操作，'use strict'下报错。
 
 10.访问描述符：2个：getter、setter，setter忽略writable。
-[[Put]]算法会大致检查这些内容：
+如果某个属性已经存在，则[[Put]]算法会大致检查这些内容：
     1.检查是否是访问描述符？是：调用setter，仅有getter，忽略操作。
-    2.否：属性描述符writable是否为true？是：赋值，否：忽略，'use strict'下报错。
-    3.没有属性描述符：添加新值。
+    2.否：属性描述符writable是否为false？是：忽略，'use strict'下报错。
+    3.赋值。
 
 11.浅不变性：对于这些属性或对象的特性配置，只针对对象本身，对象引用的对象保持不变，称为浅不变性。
 12.属性存在性：
-object.hasOwnProperty：自己有某个属性
-a in b：自己有某个属性
-for...in：遍历自己以及原型链上的全部可枚举属性。
-keys：自身可枚举属性。
-Object.getOwnPropertyNames：自身的全部属性，除Symbol。
-Object.ownKeys：自身全部类型的全部属性，包括Symbol。
+object.hasOwnProperty：自己有某个属性，包括Symbol。
+a in b：自己和原型链只要有这个属性，包括Symbol。
+for...in：遍历自己以及原型链上的全部可枚举属性，不包括Symbol。
+keys：自身可枚举属性，不包括Symbol。
+Object.getOwnPropertyNames：自身的全部属性，不包括Symbol。
+Reflect.ownKeys：自身全部类型的全部属性，包括Symbol。
