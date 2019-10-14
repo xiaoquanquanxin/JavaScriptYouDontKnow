@@ -1,4 +1,4 @@
 1.遍历嵌套作用域的规则是寻找上一级作用域，直到找不到，抛出referenceError。
 2.ES5引入了'use strict'。
 3.LHS查询不到时，会自动创建这个变量给全局作用域。'use strict'下会抛出referenceError。
-4.typeError标示查询变量成功，但类型异常。
+4.typeError表示查询变量成功，但类型异常。
